@@ -22,4 +22,4 @@ Route::get('/', function () {
 
 Route::get("bytrackname", [SpotifySearchController::class,"index"]);
 
-Route::post('search-record', [SpotifySearchController::class,"search"]);
+Route::post('search-tracks', [SpotifySearchController::class,"searchBytrack"]);

@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Search result</title>
-</head>
-<body>
+@extends('layout')
+@section('content')
+    <div class="container d-flex my-4  flex-wrap justify-content-center">
     @foreach($result["tracks"]["items"] as $data)
-    <div>
-    <a href="{{$data["external_urls"]["spotify"]}}"><img src="{{$data["album"]["images"][1]["url"]}}"/></a>
-    <p>Track Name: {{$data["name"]}} *play*</p> 
-    <p>Artist: {{$data["artists"][0]["name"]}}</p>
-    <p>Album name: {{$data["album"]["name"]}}</p>
+    <div class="card my-4 mx-2" style="width: 18rem;">
+    <a href="{{$data["external_urls"]["spotify"]}}"><img class="card-img-top" src="{{$data["album"]["images"][1]["url"]}}"/></a>
+        <div class="card-body">
+        <h5 class="card-title">{{$data["name"]}}</h5>
+        <ul class="list-unstyled">
+            <li><strong>Artist:</strong> {{$data["artists"][0]["name"]}}</li>
+            <li><strong>Album name:</strong> {{$data["album"]["name"]}}</li>
+        </ul>
+        </div>
     </div>
     @endforeach
-</body>
-</html>
+    </div>
+@stop
