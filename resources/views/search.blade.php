@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container ">
-    <h1 class="text-center">Search by Track Name</h1>
+    <h1 class="text-center">Search by <span class="text-capitalize">{{$lookup}}</span> Name </h1>
     <form  class =" d-flex align-items-center justify-content-center flex-column" action="{{url ('/search-results')}}" method="post">
       {{ csrf_field() }}
-        <input type="hidden" name="query" value="track">
-        <label for="name">Track Name:</label>
+        <input type="hidden" name="query" value="{{$lookup}}">
+        <label for="name"><span class="text-capitalize">{{$lookup}}</span> Name:</label>
         <input type="text" name="name" id="name" required/>
         
             <div class="my-3 text-center">

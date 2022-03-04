@@ -1,16 +1,18 @@
 @extends('layout')
 
 @section('content')
+    
 <div class="container text-center">
-
-    <h1>Spotify search</h1>
+    <img src="{{URL('images/Spotify_Logo_CMYK_Green.png')}}" alt="spotify logo" class="img-fluid" width="500">
+    <h1>Spotify Search Tool</h1>
     <p>How would you like to search?</p>
-    <div class="d-flex justify-content-center">    
-        <a href="bytrackname" class="btn btn-primary mx-1"> Track Name</a>
-        <a href="byartist" class="btn btn-primary mx-1">Artist</a>
-        <a href="byalbum" class="btn btn-primary mx-1">Album</a>
-        <a href="byplaylist" class="btn btn-primary mx-1">Playlist</a>
-    </div>
+    <form class="d-flex justify-content-center" action="{{url ('/search')}}" method="POST"> 
+        {{ csrf_field() }}
+        <button name="lookup" value="track"href="bytrackname" class="btn btn-primary mx-1"> Track Name</button>
+        <button name="lookup" value="artist" class="btn btn-primary mx-1">Artist</button>
+        <button name="lookup" value="album" class="btn btn-primary mx-1">Album</button>
+        <button name="lookup" value="playlist" class="btn btn-primary mx-1">Playlist</button>
+    </form>
 
 </div>
 @stop

@@ -8,11 +8,6 @@ use Spotify;
 
 class SpotifySearchController extends Controller
 {
-    function index()
-    {
-        $collection = Spotify::searchTracks('Closed on Sunday')->get();
-        return view('bytrackname',['collection'=>$collection]);
-    }
 
     function search(Request $request)
     {
@@ -25,12 +20,12 @@ class SpotifySearchController extends Controller
                 $amount = $request->get('resultsRange');
                 if($queryType === 'track'){
                     $result = Spotify::searchTracks($name)->limit($amount)->get();
-                    return view('trackresult',['result'=>$result]);
+                    return view('results/trackresult',['result'=>$result]);
                 }
                 if($queryType === 'artist'){
                     $result = Spotify::searchArtists($name)->limit($amount)->get();
                     //return $result;
-                    return view('artistresult',['result'=>$result]);
+                    return view('results/artistresult',['result'=>$result]);
                 }
 
             
@@ -40,6 +35,29 @@ class SpotifySearchController extends Controller
         }
 
         
+    }
+
+    function query(Request $request)
+    {
+        if($request->isMethod('post'))
+        {
+            $lookup = $request->get('lookup');
+
+            switch($lookup){
+                case "track":
+                    return view('search',['lookup'=>$lookup]);
+                    break;
+                case "artist":
+                    return view('search',['lookup'=>$lookup]);
+                    break;
+                case "album":
+                    return view('search',['lookup'=>$lookup]);
+                    break;
+                case "playlist":
+                    return view('search',['lookup'=>$lookup]);
+                    break;
+            }
+        }
     }
 }
 

@@ -29,3 +29,4 @@ Route::get("byartist", function() {
 });
 
 Route::post('search-results', [SpotifySearchController::class,"search"]);
+Route::post('search', [SpotifySearchController::class,"query"]);
