@@ -8,7 +8,12 @@
 </head>
 <body>
     @foreach($result["tracks"]["items"] as $data)
-    <img src="{{$data["album"]["images"][0]["url"]}}"/>
+    <div>
+    <a href="{{$data["external_urls"]["spotify"]}}"><img src="{{$data["album"]["images"][1]["url"]}}"/></a>
+    <p>Track Name: {{$data["name"]}} *play*</p> 
+    <p>Artist: {{$data["artists"][0]["name"]}}</p>
+    <p>Album name: {{$data["album"]["name"]}}</p>
+    </div>
     @endforeach
 </body>
 </html>
