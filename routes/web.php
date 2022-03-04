@@ -20,6 +20,12 @@ Route::get('/', function () {
 });
 
 
-Route::get("bytrackname", [SpotifySearchController::class,"index"]);
+Route::get("bytrackname", function() {
+    return view('bytrackname');
+});
 
-Route::post('search-tracks', [SpotifySearchController::class,"searchBytrack"]);
+Route::get("byartist", function() {
+    return view('byartist');
+});
+
+Route::post('search-results', [SpotifySearchController::class,"search"]);

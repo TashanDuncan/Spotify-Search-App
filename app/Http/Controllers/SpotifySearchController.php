@@ -14,16 +14,32 @@ class SpotifySearchController extends Controller
         return view('bytrackname',['collection'=>$collection]);
     }
 
-    function searchByTrack(Request $request)
+    function search(Request $request)
     {
         if($request->isMethod('post'))
         {
-            $name = $request->get('name');
-            $amount = $request->get('resultsRange');
-            $result = Spotify::searchTracks($name)->limit($amount)->get();
+            $queryType = $request->get('query');
+
+            
+                $name = $request->get('name');
+                $amount = $request->get('resultsRange');
+                if($queryType === 'track'){
+                    $result = Spotify::searchTracks($name)->limit($amount)->get();
+                    return view('trackresult',['result'=>$result]);
+                }
+                if($queryType === 'artist'){
+                    $result = Spotify::searchArtists($name)->limit($amount)->get();
+                    //return $result;
+                    return view('artistresult',['result'=>$result]);
+                }
+
+            
+
+            abort(404);
+
         }
 
-        return view('result',['result'=>$result]);
+        
     }
 }
 

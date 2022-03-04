@@ -1,10 +1,16 @@
 @extends('layout')
 
 @section('content')
+<div class="container text-center">
+
     <h1>Spotify search</h1>
-    <a href="bytrackname">Search By Track Name</a>
-    <a href="byartist">Search By Artist</a>
-    <a href="byalbum">Search By album</a>
-    <a href="byplaylist">Search By playlist</a>
-        
+    <p>How would you like to search?</p>
+    <div class="d-flex justify-content-center">    
+        <a href="bytrackname" class="btn btn-primary mx-1"> Track Name</a>
+        <a href="byartist" class="btn btn-primary mx-1">Artist</a>
+        <a href="byalbum" class="btn btn-primary mx-1">Album</a>
+        <a href="byplaylist" class="btn btn-primary mx-1">Playlist</a>
+    </div>
+
+</div>
 @stop
