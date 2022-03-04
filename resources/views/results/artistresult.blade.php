@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+@extends('results/resultsLayout')
     <div class="container d-flex my-4  flex-wrap justify-content-center">
     @foreach($result["artists"]["items"] as $data)
     <div class="card my-4 mx-2" style="width: 18rem;">
